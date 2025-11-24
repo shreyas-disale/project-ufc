@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFC Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        button {
+            background-color: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #764ba2;
+        }
+        .instructions {
+            margin-top: 30px;
+            text-align: left;
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .instructions h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .instructions ul {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥊 UFC Fighting Game 🥊</h1>
+        <p>Click below to start the game. A window will open on your desktop.</p>
+        <button onclick="startGame()">Start Game</button>
+        
+        <div class="instructions">
+            <h2>Controls:</h2>
+            <ul>
+                <li><strong>Player 1:</strong> WASD to move, Space to punch</li>
+                <li><strong>Player 2:</strong> Arrow keys to move, Enter to punch</li>
+                <li><strong>R:</strong> Restart the game</li>
+            </ul>
+            <h2>Game Rules:</h2>
+            <ul>
+                <li>3-minute match</li>
+                <li>Each punch does 10 damage</li>
+                <li>First fighter to 0 HP loses</li>
+                <li>If time runs out, it's a draw</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function startGame() {
+            fetch('/start-game')
+                .then(response => response.json())
+                .then(data => {
+                    alert('Game window opening! Check your desktop.');
+                })
+                .catch(error => {
+                    alert('Error starting game: ' + error);
+                });
+        }
+    </script>
+</body>
+</html>
